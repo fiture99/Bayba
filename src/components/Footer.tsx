@@ -125,7 +125,11 @@ export default function Footer() {
           </p>
           <p className="text-sm">
             Website designed by{' '}
-            <span className="text-white font-semibold">Taibatou Tech</span>
+            
+             <a href="https://fiture99.github.io/Nyakoi-Services/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:underline">
+             <span className="text-white font-semibold">Nykoi Services</span>
+             </a>
+
           </p>
         </div>
       </div>
