@@ -1,7 +1,7 @@
 import { Handshake, Building2 } from 'lucide-react';
-import riaLogo from '../images/ria.png';
+import riaLogo from '../images/RIA.png';
 import moneygramLogo from '../images/moneygram.png';
-import kemosonLogo from '../images/kemoson.jpg';
+import kemosonLogo from '../images/Kemoson.jpg';
 import smallworldLogo from '../images/smallworld.jpg';
 import transfastLogo from '../images/trans-fast.jpg';
 
