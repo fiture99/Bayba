@@ -1,4 +1,5 @@
 import { Send, ArrowRight } from 'lucide-react';
+import backgroundImage from '../images/image.png';
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -14,7 +15,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("/src/images/image.png")', // Replace with your background image path
+          backgroundImage: `url(${backgroundImage})`, // Replace with your background image path
         }}
       >
         {/* Overlay for better text readability */}

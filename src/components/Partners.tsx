@@ -1,4 +1,9 @@
 import { Handshake, Building2 } from 'lucide-react';
+import riaLogo from '../images/ria.png';
+import moneygramLogo from '../images/moneygram.png';
+import kemosonLogo from '../images/kemoson.jpg';
+import smallworldLogo from '../images/smallworld.jpg';
+import transfastLogo from '../images/trans-fast.jpg';
 
 export default function Partners() {
   const partners = [
@@ -15,16 +20,13 @@ export default function Partners() {
   ];
 
   // Money transfer partners logos - replace with actual logo paths
-  const transferPartners = [
-    { name: 'RIA', logo: '/src/images/ria.png' },
-    { name: 'MoneyGram', logo: '/src/images/moneygram.png' },
-    { name: 'Kemoson', logo: '/src/images/kemoson.jpg' },
-    { name: 'Small World', logo: '/src/images/smallworld.jpg' },
-    { name: 'Trans Fast', logo: '/src/images/trans-fast.jpg' },
-    // { name: 'Remitly', logo: '../images/partners/remitly-logo.png' },
-    // { name: 'Wise', logo: '../images/partners/wise-logo.png' },
-    // { name: 'Xoom', logo: '../images/partners/xoom-logo.png' },
-  ];
+ const transferPartners = [
+  { name: 'RIA', logo: riaLogo },
+  { name: 'MoneyGram', logo: moneygramLogo },
+  { name: 'Kemoson', logo: kemosonLogo },
+  { name: 'Small World', logo: smallworldLogo },
+  { name: 'Trans Fast', logo: transfastLogo },
+];
 
   return (
     <section id="partners" className="py-20 bg-aliceblue">
