@@ -36,7 +36,7 @@ export default function Navbar() {
               >
                 <img
                   className="h-14 w-auto" // Adjust height as needed
-                  src="/src/images/logo.jpg" // Your logo path
+                  src="../images/logo.jpg" // Your logo path
                   alt="Company Logo"
                   onError={(e) => {
                     // Fallback if image fails to load
