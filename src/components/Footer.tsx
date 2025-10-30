@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
+import logo from '../images/logo.jpg';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ export default function Footer() {
               >
                 <img
                   className="h-14 w-auto" // Adjust height as needed
-                  src="/src/images/logo.jpg" // Your logo path
+                  src={logo} // Your logo path
                   alt="Company Logo"
                   onError={(e) => {
                     // Fallback if image fails to load

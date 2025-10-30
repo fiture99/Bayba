@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from '../images/logo.jpg';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function Navbar() {
               >
                 <img
                   className="h-14 w-auto" // Adjust height as needed
-                  src="../images/logo.jpg" // Your logo path
+                  src={logo} // Your logo path
                   alt="Company Logo"
                   onError={(e) => {
                     // Fallback if image fails to load
