@@ -1,26 +1,40 @@
-import { useState } from 'react';
-import { Send, Globe, Shield, Clock, Users, MapPin, Phone, Mail, Menu, X } from 'lucide-react';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Management from './components/Management';
-import Partners from './components/Partners';
-import Contact from './components/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Services from "./components/Services";
+import Management from "./components/Management";
+import Partners from "./components/Partners";
+import Contact from "./components/Contact";
+import Branches from "./components/Branches";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Management />
-      <Partners />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Navbar />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <About />
+                <Services />
+                <Partners />
+                <Contact />
+              </>
+            }
+          />
+          <Route path="/branches" element={<Branches />} />
+          <Route path="/management" element={<Management />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

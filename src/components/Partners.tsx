@@ -4,18 +4,21 @@ import moneygramLogo from '../images/moneygram.png';
 import kemosonLogo from '../images/Kemoson.jpg';
 import smallworldLogo from '../images/smallworld.jpg';
 import transfastLogo from '../images/trans-fast.jpg';
+import tbl from '../images/tbl.jpg';
 
 export default function Partners() {
   const partners = [
     {
-      name: 'Trust Bank Limited',
+      name: 'Trust Bank',
       description: 'Our parent company and leading financial institution in The Gambia',
-      icon: Building2,
+      logo: tbl,
+      type: 'logo'
     },
     {
       name: 'GBO Network',
       description: 'Strategic partner for extended money transfer services',
-      icon: Handshake,
+      logo: tbl,
+      type: 'logo'
     },
   ];
 
@@ -28,46 +31,54 @@ export default function Partners() {
   ];
 
   return (
-    <section id="partners" className="py-12 sm:py-16 lg:py-20 bg-aliceblue">
+    <section id="partners" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-aliceblue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800 mb-4">Our Partners</h2>
-          <div className="w-20 sm:w-24 h-1 bg-navy-800 mx-auto mb-4 sm:mb-6"></div>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto px-4">
-            Collaborating with industry leaders to provide exceptional service
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-lg mb-6">
+            <Handshake className="w-10 h-10 text-navy-800" />
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy-800 mb-4">
+            Our <span className="text-blue-600">Partners</span>
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-navy-800 mx-auto mb-6 rounded-full"></div>
+          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Collaborating with industry leaders to provide exceptional financial services
           </p>
         </div>
 
         {/* Moving Logos Marquee */}
-        <div className="mb-12 sm:mb-16 lg:mb-20">
-          <h3 className="text-xl sm:text-2xl font-bold text-navy-800 text-center mb-6 sm:mb-8">
-            Money Transfer Services
+        <div className="mb-16 sm:mb-20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-navy-800 text-center mb-8">
+            Money Transfer <span className="text-blue-600">Services</span>
           </h3>
-          <div className="relative overflow-hidden bg-white rounded-xl sm:rounded-2xl shadow-lg py-6 sm:py-8">
-            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 lg:w-20 bg-gradient-to-r from-aliceblue to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 lg:w-20 bg-gradient-to-l from-aliceblue to-transparent z-10"></div>
+          <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl py-8">
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-blue-50 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-blue-50 to-transparent z-10"></div>
             
             <div className="flex animate-marquee whitespace-nowrap">
               {[...transferPartners, ...transferPartners].map((partner, index) => (
                 <div
                   key={index}
-                  className="inline-flex items-center justify-center mx-4 sm:mx-6 lg:mx-8 min-w-[80px] sm:min-w-[100px] lg:min-w-[120px]"
+                  className="inline-flex items-center justify-center mx-6 sm:mx-8 lg:mx-12 min-w-[100px] sm:min-w-[120px] lg:min-w-[150px]"
                 >
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    className="h-8 sm:h-10 lg:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      // Show text fallback
-                      const fallback = document.createElement('div');
-                      fallback.className = 'text-gray-500 font-semibold text-xs sm:text-sm text-center';
-                      fallback.textContent = partner.name;
-                      target.parentNode?.appendChild(fallback);
-                    }}
-                  />
+                  <div className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      className="h-10 sm:h-12 lg:h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-all duration-300"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        // Show text fallback
+                        const parent = target.parentNode as HTMLElement;
+                        const fallback = document.createElement('div');
+                        fallback.className = 'text-gray-500 font-semibold text-sm sm:text-base text-center';
+                        fallback.textContent = partner.name;
+                        parent.appendChild(fallback);
+                      }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -75,42 +86,74 @@ export default function Partners() {
         </div>
 
         {/* Strategic Partners Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-5xl mx-auto">
-          {partners.map((partner, index) => {
-            const Icon = partner.icon;
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 lg:hover:-translate-y-2 group"
-              >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto mb-16">
+          {partners.map((partner, index) => (
+            <div
+              key={index}
+              className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 transform hover:-translate-y-2"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-50"></div>
+              
+              <div className="relative z-10 p-8">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-navy-800 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-105 lg:group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+                  {/* Logo or Icon Container */}
+                  <div className="mb-6">
+                    <div className="bg-gradient-to-br   w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      {partner.type === 'logo' ? (
+                        <img
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          className="bg-gradient-to-br   w-25 h-25 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentNode as HTMLElement;
+                            const fallback = document.createElement('div');
+                            fallback.className = 'text-white font-semibold text-sm text-center';
+                            fallback.textContent = partner.name.split(' ')[0];
+                            parent.appendChild(fallback);
+                          }}
+                        />
+                      ) : (
+                        <partner.icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                      )}
+                    </div>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-navy-800 mb-3 sm:mb-4">{partner.name}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">{partner.description}</p>
+
+                  {/* Partner Info */}
+                  <h3 className="text-2xl sm:text-3xl font-bold text-navy-800 mb-4 group-hover:text-blue-700 transition-colors duration-300">
+                    {partner.name}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-lg sm:text-xl max-w-md">
+                    {partner.description}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* Partnership Opportunities */}
-        <div className="mt-12 sm:mt-16 bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10 xl:p-12 shadow-lg text-center">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-navy-800 mb-3 sm:mb-4">Partnership Opportunities</h3>
-          <p className="text-gray-700 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto mb-6 sm:mb-8">
-            We're always looking to collaborate with organizations that share our commitment to
-            financial inclusion and excellent customer service. Get in touch to explore partnership opportunities.
-          </p>
-          <button
-            onClick={() => {
-              const element = document.querySelector('#contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="px-6 sm:px-8 py-3 sm:py-4 bg-navy-800 text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-navy-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            Contact Us
-          </button>
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-2xl p-8 sm:p-12 border border-blue-100">
+          <div className="text-center">
+            <h3 className="text-3xl sm:text-4xl font-bold text-navy-800 mb-6">
+              Partnership <span className="text-blue-600">Opportunities</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+              We're always looking to collaborate with organizations that share our commitment to
+              financial inclusion and excellent customer service. Get in touch to explore partnership opportunities.
+            </p>
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-gradient-to-r from-blue-600 to-navy-700 text-white py-4 px-8 rounded-xl font-semibold hover:from-blue-700 hover:to-navy-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+            >
+              Contact Us
+            </button>
+          </div>
         </div>
       </div>
 
@@ -124,7 +167,7 @@ export default function Partners() {
           }
         }
         .animate-marquee {
-          animation: marquee 40s linear infinite;
+          animation: marquee 35s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -133,7 +176,7 @@ export default function Partners() {
         /* Slower animation on mobile for better readability */
         @media (max-width: 640px) {
           .animate-marquee {
-            animation-duration: 50s;
+            animation-duration: 45s;
           }
         }
       `}</style>

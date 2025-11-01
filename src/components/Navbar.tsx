@@ -1,24 +1,47 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../images/logo.jpg';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About Us' },
     { href: '#services', label: 'Services' },
-    { href: '#management', label: 'Management' },
+    { href: '/management', label: 'Management' },
     { href: '#partners', label: 'Partners' },
+    { href: '/branches', label: 'Branches' }, // Fixed the typo here
     { href: '#contact', label: 'Contact' },
   ];
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    if (href.startsWith('/')) {
+      // Route navigation - navigate to new page
+      navigate(href);
+      setIsMenuOpen(false);
+    } else {
+      // Hash link - smooth scroll on current page
+      // If we're not on the home page, navigate to home first then scroll
+      if (window.location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
       setIsMenuOpen(false);
     }
   };
@@ -31,8 +54,12 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <div className="flex items-center">
               <a 
-                href="#home" 
-                onClick={(e) => scrollToSection(e, '#home')}
+                href="/" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/');
+                  setIsMenuOpen(false);
+                }}
                 className="flex items-center"
               >
                 <img
@@ -48,7 +75,7 @@ export default function Navbar() {
                 />
                 {/* Text fallback */}
                 <span className="ml-2 text-lg sm:text-xl font-bold text-navy-800 hidden">
-                  Your Company
+                  Bayba Financial
                 </span>
               </a>
             </div>
@@ -60,7 +87,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => handleNavigation(e, link.href)}
                 className="text-gray-700 hover:text-navy-800 px-2 lg:px-3 py-2 text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap"
               >
                 {link.label}
@@ -90,7 +117,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => handleNavigation(e, link.href)}
                 className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-navy-800 hover:bg-gray-50 rounded-lg transition-colors duration-200 border-b border-gray-100 last:border-b-0"
               >
                 {link.label}
