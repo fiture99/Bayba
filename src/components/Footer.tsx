@@ -136,7 +136,7 @@ export default function Footer() {
           <p className="text-xs sm:text-sm">
             Website designed by{' '}
             <a 
-              href="https://fiture99.github.io/Nyakoi-Services/" 
+              href="https://nyakoi-services.onrender.com/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-white font-semibold hover:underline transition-colors duration-200"
